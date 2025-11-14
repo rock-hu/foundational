@@ -12,14 +12,23 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
+import '@/global.css'; // Make sure this path is correct
+
+import '@/global.css';
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
+    
+    <GluestackUIProvider mode="dark">
+      <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppContent />
     </SafeAreaProvider>
+    </GluestackUIProvider>
+  
   );
 }
 

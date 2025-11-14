@@ -1,0 +1,45 @@
+allprojects {
+    repositories {
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.contains('repo1.maven.org/maven2') || 
+                    url.contains('jcenter.bintray.com') || 
+                    url.contains('maven.google.com') || 
+                    url.contains('plugins.gradle.org/m2')) {
+                    remove repo
+                }
+            }
+        }
+        maven { 
+            url 'https://maven.aliyun.com/repository/public'
+            allowInsecureProtocol = true
+        }
+        maven { 
+            url 'https://maven.aliyun.com/repository/google'
+            allowInsecureProtocol = true
+        }
+        maven { 
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
+            allowInsecureProtocol = true
+        }
+        maven { 
+            url 'https://repo.huaweicloud.com/repository/maven/'
+            allowInsecureProtocol = true
+        }
+        maven { 
+            url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/'
+            allowInsecureProtocol = true
+        }
+        maven { 
+            url 'https://mirrors.163.com/maven/repository/maven-public/'
+            allowInsecureProtocol = true
+        }
+        maven { 
+            url 'https://maven.oscs.oschina.net/content/groups/public/'
+            allowInsecureProtocol = true
+        }
+        mavenCentral()
+        google()
+    }
+}
